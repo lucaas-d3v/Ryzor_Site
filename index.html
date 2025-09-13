@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ryzor</title>
+    <link rel="icon" href="assets/Ryzor_icon.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="assets/Ryzor_icon_light.svg" media="(prefers-color-scheme: dark)">
+
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+    <header>
+        <nav>
+        
+            <h1>Ryzor</h1>
+        
+        </nav>
+    </header>
+
+    <main>
+        <section class="oque_e">
+            <h2 class="titulos">Oque é?</h2>
+
+            <p>
+              <strong class="logo">Ryzor</strong> é uma 
+                <abbr title="Ferramenta de linha de comando">CLI</abbr> 
+                para organização, backup e gerenciamento de arquivos por tipo/extensão.  
+                O projeto ainda está em desenvolvimento e não está pronto para uso em produção.
+            </p>
+
+        </section>
+    
+        <p class="separador">a</p>
+
+        <section class="visao_geral">
+            <h2 class="titulos">Visão Geral</h2>
+                
+            <ul>    
+                <li>
+                    <strong>Objetivo principal:</strong> 
+                    Automatizar a organização e backup de arquivos em diretórios, categorizando-os por tipos/extensões definidos pelo usuário.
+                    <br><br>
+                </li>
+                
+                <li>
+                    <strong>Funcionalidades atuais:</strong
+                    <li class="sub_lista">
+                        Definir e editar tipos de arquivos/extensões.
+                    </li>
+                    <li class="sub_lista">
+                        Remover tipos/extensões.
+                    </li>
+                    <li class="sub_lista">
+                        Interface 
+                        
+                        <abbr title="Ferramenta de linha de comando">CLI</abbr>
+                        amigável e visualmente rica com 
+                
+                        <abbr title="Lib Python para criar textos formatados e saídas atraentes no terminal">Rich</abbr> .
+                    </li>
+
+                    <li class="sub_lista">
+                        Barra de progresso e feedback visual.
+                    </li>
+                    <br>
+                </li>
+
+                <li>
+                    <strong>Persistência de dados:</strong> 
+                    Arquivos JSON 
+
+                    <code>
+                    <abbr title="Arquivo onde as extensões adicionadas por você serão armazenas.">extensions.json</abbr> 
+                    </code>
+                    
+                    armazenam as definições de tipos e extensões
+                    
+                    <br>
+                </li>
+            
+            </ul>
+        </section>
+    
+        <p class="separador">a</p>
+
+        <section class="estrutura_do_projeto">
+
+            <h2 class="titulos">Estrutura do Projeto</h2>
+
+            <div class="bash_case">
+                <pre><code class="bash">
+Ryzor
+├── src/
+│   ├── cli.py           # Ponto de entrada CLI
+│   ├── modules/
+│   │   ├── definer.py
+│   │   ├── file_manager.py
+│   │   ├── lister.py
+│   │   ├── logger.py        # Logging e UI
+│   │   ├── remover.py
+│   │   ├── utils.py
+│   │   └── data/
+│   │       └──extensions.json
+└── tests/
+    └── generator.py     # Geração de arquivos de teste
+
+</code></pre>
+            </div>
+
+        </section>
+
+        <p class="separador">a</p>
+
+        <section class="exemplo_uso">
+            <h2 class="titulos">Exemplo de Uso</h2>
+        
+            <div class="bash_case">
+
+                <pre><code class="bash">
+# Organizar arquivos
+python src/cli.py organize -p ./meus_arquivos -d ./organizados
+
+# Definir novas extensões
+python src/cli.py define -t Imagens -exts .jpg .png .gif
+
+# Listar extensões
+python src/cli.py list -e_exts
+
+# Remover extensões
+python src/cli.py remove -t Imagens -exts .gif
+                </code></pre>
+            
+            </div>
+        
+        </section>
+        
+        <p class="separador">a</p>
+
+        <section class="dependencias">
+            <h2 class="titulos">Dependências</h2>
+        
+            <ul>
+                <li>Python 3.11+</li>
+                <li>
+                    <code>
+                       
+                        <abbr title="Link direto da lib Rich no pypi.">
+
+                            <a href="https://pypi.org/project/rich/", target="_blank">Rich</a>
+
+                        </abbr> 
+                       
+                    </code>
+                </li>
+                
+                <li>
+                    <code>
+                        <abbr title="Link direto da lib pyfiglet no pypi.">
+
+                            <a href="https://pypi.org/project/pyfiglet/", target="_blank">pyfiglet</a>
+
+                        </abbr> 
+                    
+                    </code>
+                </li>
+
+                <li>
+                    <code>
+                        
+                        <abbr title="Link direto da lib send2trash no pypi.">
+                            
+                            <a href="https://pypi.org/project/Send2Trash/", target="_blank">send2trash</a>
+                        
+                        </abbr>
+
+                    </code>
+                </li>
+                
+                <!-- Substituir esta parte no seu HTML: -->
+
+                <li>Bibliotecas padrão: 
+                    <abbr title="Biblioteca padrão - Manipulação de caminhos de arquivos">
+                        <a href="https://docs.python.org/3/library/pathlib.html" target="_blank">
+                            <code>pathlib</code>
+                        </a>
+                    </abbr>, 
+
+                    <abbr title="Biblioteca padrão - Operações de arquivos de alto nível">
+                        <a href="https://docs.python.org/3/library/shutil.html" target="_blank">
+                            <code>shutil</code>
+                        </a>
+                    </abbr>, 
+
+                    <abbr title="Biblioteca padrão - Interface do sistema operacional">
+                        <a href="https://docs.python.org/3/library/os.html" target="_blank">
+                            <code>os</code>
+                        </a>
+                    </abbr>, 
+
+                    <abbr title="Biblioteca padrão - Codificador e decodificador JSON">
+                        <a href="https://docs.python.org/3/library/json.html" target="_blank">
+                            <code>json</code>
+                        </a>
+                    </abbr>, 
+
+                    <abbr title="Biblioteca padrão - Parser de argumentos de linha de comando">
+                        <a href="https://docs.python.org/3/library/argparse.html" target="_blank">
+                            <code>argparse</code>
+                        </a>
+                    </abbr>, 
+
+                    <abbr title="Biblioteca padrão - Impressão bonita de estruturas de dados">
+                        <a href="https://docs.python.org/3/library/pprint.html" target="_blank">
+                            <code>pprint</code>
+                        </a>
+                    </abbr>, 
+
+                    <abbr title="Biblioteca padrão - Suporte para type hints">
+                        <a href="https://docs.python.org/3/library/typing.html" target="_blank">
+                            <code>typing</code>
+                        </a>
+                    </abbr>
+                </li>
+
+                </ul>
+
+            <h5 class="sub_titulo">Instalação das dependências:</h5>
+
+            <div class="bash_case">
+                <pre>
+                    <code class="bash">
+pip install rich pyfiglet
+                    </code>
+                </pre>
+            </div>
+
+        </section>
+
+        <p class="separador">a</p>
+
+        <section class="status">
+            <h2 class="titulos">Status</h2>
+        
+            <h5 class="sub_titulo">
+                Projeto funcional, mas em estágio intermediário:
+            </h5>
+            
+            <ul>
+                    <li>
+                        Sem testes automatizados.
+                    </li>
+
+                    <li>
+                        Sem validação robusta de inputs.
+                    </li>
+
+                    <li>
+                        Não pronto para produção.
+                    </li>
+
+                    <li>
+                        Sem documentação externa completa.
+                    </li>
+                
+            </ul>
+
+            <div class="github">
+                <a href="https://github.com/seu-usuario/seu-repositorio" target="_blank">
+                    <button>GitHub</button>
+                </a>
+            </div>
+        </section>
+
+        <p class="separador">a</p>
+
+        <section class="licenca">
+            <h2 class="titulos">Licença</h2>
+
+            <p>Este projeto ainda não possui uma licença definida.</p>
+        </section>
+        
+        
+    </main>
+
+    <footer>
+        <p>&#169 
+            <a class="k" href="https://github.com/lucaas-d3v", target="_blank">~K'</a>, 2025
+        </p>
+        
+        <p>Version: 0.2.0</p>
+    </footer>
+
+    </body>
+</html>
