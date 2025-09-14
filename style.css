@@ -1,3 +1,4 @@
+/* ---------- Fonts ---------- */
 @font-face {
   font-family: 'pearl';
   src: url('fonts/tan-pearl.woff2') format('woff2'),
@@ -6,354 +7,173 @@
   font-style: normal;
 }
 
-/* reset */
-
-html {
-    height: 100%;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-}
-
+/* Reset simples */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 body {
-  background-color: #191D27;
-  color: #FFFCDB;
+  background-color: #191D27; /* site body */
+  color: #FFFCDB;           /* texto principal unificado */
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
+/* ---------- Layout principal ---------- */
 main {
-    min-height: 76vh;
-    margin: 20px;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 20px;
-    background-color: #0b2774;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.separador {
-    background-color:#7F001F;
-    color: #7F001F;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 1px;
-    height: 1px;
-
-}
-
-/* header */
-
-header {
-    background-color: #7F001F;
-    height: 12vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header nav h1{
-    font-family: 'pearl', 'times';
-    font-size: 5vh;
-    color: #FFFCC8;    
-}
-
-header nav h1:hover {
-    cursor: url('assets/Ryzor_logo_creme.png') 16 16, pointer;
-    text-shadow: #FFFCC8 0px 0px 2px, #FFFCC8 0px 0px 2px, #FFFCC8 0px 0px 20px;
-}
-
-/* Bash */
-
-pre {
-  background: #1e1e1e;
-  color: #FFFCC8;           
-  padding: 1rem;
+  min-height: 76vh;
+  margin: 20px 5%;
+  padding: 24px;
+  background-color: #0b2774; /* painel de conteúdo (contraste com body) */
   border-radius: 8px;
-  overflow-x: auto;         /* rolagem se for muito longo */
-  font-family: "Fira Code", monospace;
-  font-size: 0.9rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
 
-pre code.bash::before {
-  content: "bash";          /* simula o marcador ```bash */
-  display: block;
-  color:#e7033c;           /* tua cor destaque */
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
+/* separador: use border para melhor aparencia */
+.separador {
+  border-top: 2px solid #7F001F;
+  margin: 16px 0;
 }
 
-.bash_case {
-    margin: 20px;
-    margin-bottom: 20px;
-}
-
-/* Footer */
-
-
-footer {
-  background:#7F001F;
+/* ---------- Header / Logo ---------- */
+header {
+  background-color: #7F001F;
   height: 12vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
-footer p {
-    color:#FFFCDB ;
-
+header nav h1{
+  font-family: 'pearl', "Times New Roman", serif;
+  font-size: clamp(28px, 5vh, 48px);
+  color: #FFFCDB;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
 }
-
-/* Oque é? */
-
-abbr {
-    position: relative;
-    cursor: help;
-    text-decoration: underline dotted;
-    color: #0fff7b;
-    transition: all 0.3s ease; /* animação suave */
-}
-
-abbr:hover {
-    color: #00CFFF;
-    transform: scale(1.05); /* cresce ligeiramente */
-    text-shadow: 0 0 5px #00CFFF;
+/* hover discreto (sem glow exagerado) */
+header nav h1:hover{
+  cursor: pointer;
+  transform: translateY(-1px);
+  transition: transform .15s ease;
 }
 
-abbr:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #04c159;
-    color: #232b4b;
-    padding: 5px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
-    z-index: 999;
-    font-size: 0.85rem;
-    
-    /* Animação do tooltip */
-    animation: tooltip-appear 0.1s ease-out;
-    opacity: 0;
-    animation-fill-mode: forwards;
+/* ---------- Code block / pre ---------- */
+pre {
+  background: #1e1e1e;
+  color: #FFFCC8;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+pre code.bash::before{
+  content: "bash";
+  display:block;
+  color: #E03B54; /* marcador discreto */
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
 }
 
-@keyframes tooltip-appear {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(10px) scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1);
-    }
+/* ---------- Tipografia de títulos ---------- */
+.titulos, .visao_geral h2, .estrutura_do_projeto h2,
+.exemplo_uso h2, .dependencias h2, .status h2, .licenca h2 {
+  font-family: 'pearl', serif;
+  color: #00CFFF; /* acento único para títulos */
+  margin: 10px 10px;
+  font-size: clamp(20px, 3.2vh, 34px);
+  line-height: 1.1;
 }
 
-.github {
-    display: flex;
-    align-items: center;
-    justify-content:flex-start;
-    margin: 20px 0;
-    margin-left: 20px; 
-}
-
-.github a {
-    text-decoration: none; /* remove sublinhado */
-}
-
-.github button {
-    background-color: #7F001F;
-    color: #FFFCC8;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-family: 'pearl', 'times';
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.5s ease;
-}
-
-.github button:hover {
-    background-color: #00CFFF;
-    color: #191D27;
-    transform: scale(1.05);
-}
-
-
-.logo {
-    color: #e7033c;
-    transition: all 0.3s ease;
-}
-
-.logo:hover {
-    color: #00CFFF;
-    text-shadow: #00CFFF 0px 0px 2px, #00CFFF 0px 0px 2px, #00CFFF 0px 0px 20px;
-    cursor: url('assets/Ryzor_logo_red.png') 16 16, pointer;
-    transform: scale(1.05); /* cresce ligeiramente */
-    letter-spacing: 1px; /* espaçamento das letras */
-}
-
-
-.oque_e {
-    margin: 10px;
-
-}
-.oque_e p {
-    color: #FFFCC8;
-}
-
-.titulos {
-    margin: 20px;
-    margin-left: 10px;
-    font-family: 'pearl';
-    color: #00CFFF;
-    font-weight: bold;
-
-}
-
+/* Subtítulos com leve variação (creme mais suave) */
 .sub_titulo {
-    font-family: 'pearl';
-    color: #f7db78;
-    font-weight: bold;
-
+  font-family: 'pearl', serif;
+  color: #FFFCDB;
+  font-size: 1.05rem;
+  margin: 8px 10px;
 }
 
-abbr, a {
-    font-size: 17px;
-    transition: all 0.2s ease;
-}
-
-a:hover {
-    color: #00CFFF;
-    text-decoration: underline;
-    font-size: 18px;
-
-}
-
-
-p {
-    margin-left: 10px;
-    
-}
-
-/* Visão Geral */
-
-.visao_geral {
-    margin-top: 20px;
-}
-
-.visao_geral h2 {  
-    margin: 10px;
-    margin-left: 10px;
-    font-family: 'pearl';
-
-}
-
-.visao_geral {
-    margin: 10px;
-}
-
-ul {
-    margin-left: 40px;
-
-}
-
-.sub_lista {
-    margin-left: 30px;
-}
-
-/* Estrutura do Projeto */
-
-.estrutura_do_projeto h2{
-    margin: 10px;
-    margin-left: 10px;
-    font-family: 'pearl';
-
-}
-
-.estrutura_do_projeto {
-    margin: 10px;
-}
-
-/* Exemplo de Uso */
-
-.exemplo_uso h2 {
-    margin: 10px;
-    margin-left: 10px;
-    font-family: 'pearl';
-}
-
-.exemplo_uso {
-    margin: 10px;
-}
-
-/* Dependências */
-
-.dependencias h2 {
-    margin: 10px;
-    margin-left: 10px;
-    font-family: 'pearl';
-}
-
-.dependencias h5 {
-    margin: 20px;
-    margin-left: 20px;
-    font-family: 'pearl';
-}
-
-.dependencias {
-    margin: 10px;
-}
-
-/* Status */
-
-.status h2 {
-    margin: 10px;
-    margin-left: 10px;
-    font-family: 'pearl';
-
-}
-
-.status ul{
-    margin-left: 50px;
-}
-
-.status h5 {
-    margin: 20px;
-    margin-left: 20px;
-    font-family: 'pearl';
-
-}
-
-.status {
-    margin: 10px;
-}
-
-/* Licença */
-
-.licenca h2 {
-    margin: 10px;
-    margin-left: 10px;
-    font-family: 'pearl';
-
-}
-
-.licenca{
-    margin: 10px;
-}
-
+/* ---------- Links e abbr ---------- */
+/* Único acento para links: ciano */
 a {
-    text-decoration: none;
-    color: #e7033c;
+  color: #00CFFF;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  opacity: 0.95;
+  transform: translateY(-1px);
 }
 
-.k{
-    text-decoration: none;
-    color:#FFFCC8
+/* Abreviaturas: manter simples, tooltip só se necessário */
+abbr {
+  cursor: help;
+  color: #FFFCDB;
+  text-decoration: underline dotted;
+}
+abbr:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: #FFFCDB;
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.85rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+/* ---------- Github button ---------- */
+.github {
+  display:flex;
+  align-items:center;
+  margin: 18px 0 18px 10px;
+}
+.github a { text-decoration: none; }
+.github button {
+  background-color: #7F001F;
+  color: #FFFCDB;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: 'pearl', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+}
+.github button:hover {
+  background-color: #6ad7ff; /* hover leve para destaque */
+  color: #191D27;
+  transform: translateY(-2px);
+}
+
+/* ---------- Texto do conteúdo ---------- */
+p, li {
+  color: #FFFCDB; /* corpo do texto consistente */
+  margin: 8px 10px;
+  font-size: 1rem;
+}
+
+/* listas */
+ul { margin-left: 40px; margin-bottom: 12px; }
+.sub_lista { margin-left: 30px; }
+
+/* status list improvements */
+.status ul { margin-left: 44px; }
+
+/* licenca */
+.licenca p { margin: 10px; }
+
+/* utilitários responsivos */
+@media (max-width: 720px) {
+  main { margin: 12px 4%; padding: 18px; }
+  .github button { font-size: 0.95rem; padding: 8px 14px; }
+  header { height: 11vh; }
 }
