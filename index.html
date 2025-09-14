@@ -1,185 +1,158 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ryzor</title>
+  <title>Ryzor — Organizador de Arquivos (CLI)</title>
+  <meta name="description" content="Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões.">
+  <meta name="keywords" content="Ryzor, CLI, organizador de arquivos, backup, Python, rich, pyfiglet">
+  <link rel="canonical" href="https://lucaas-d3v.github.io/Ryzor_Site/">
+
+  <!-- Open Graph / Social preview -->
+  <meta property="og:title" content="Ryzor — Organizador de Arquivos (CLI)">
+  <meta property="og:description" content="Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lucaas-d3v.github.io/Ryzor_Site/">
+  <meta property="og:site_name" content="Ryzor">
+  <!-- se tiver imagem de preview, adicione: -->
+  <!-- <meta property="og:image" content="https://exemplo.com/assets/preview.png"> -->
+
+  <!-- JSON-LD básico para indexação -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Ryzor",
+    "description": "Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões.",
+    "url": "https://lucaas-d3v.github.io/Ryzor_Site/",
+    "programmingLanguage": "Python",
+    "codeRepository": "https://github.com/lucaas-d3v/Ryzor"
+  }
+  </script>
+
   <link rel="icon" href="assets/Ryzor_icon.svg" media="(prefers-color-scheme: light)">
   <link rel="icon" href="assets/Ryzor_icon_light.svg" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <h1 id="site-title">Ryzor</h1>
+  <!-- Skip link para acessibilidade -->
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+  <header role="banner">
+    <nav class="top-nav" aria-label="Principal">
+      <div class="brand">
+        <img src="assets/Ryzor_icon.svg" alt="Ryzor" width="40" height="40" />
+        <h1 id="site-title">Ryzor</h1>
+      </div>
+
+      <ul class="nav-links" role="navigation">
+        <li><a href="#quickstart">Começar</a></li>
+        <li><a href="#features">O que faz</a></li>
+        <li><a href="#dependencias">Dependências</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#github">GitHub</a></li>
+      </ul>
     </nav>
+    <div class="hero" role="region" aria-labelledby="hero-title">
+      <h2 id="hero-title">Organize seus arquivos. Rapidamente. Pelo terminal.</h2>
+      <p class="hero-sub">Ryzor é uma ferramenta CLI em Python para organizar, agrupar e fazer backup de arquivos por tipo/extensão — simples, rápida e personalizável.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="https://github.com/lucaas-d3v/Ryzor" id="github" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+        <a class="btn ghost" href="#quickstart">Como começar</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="oque_e" aria-labelledby="oque-e-title">
-      <h2 id="oque-e-title" class="titulos">O que é?</h2>
+  <main id="main-content" tabindex="-1">
+    <!-- Quickstart -->
+    <section id="quickstart" aria-labelledby="quickstart-title" class="card">
+      <h2 id="quickstart-title" class="titulos">Começar (Quickstart)</h2>
+      <p>Rápido exemplo para ver o Ryzor em ação — execute no diretório do projeto:</p>
 
-      <p>
-        <strong class="logo">Ryzor</strong> é uma
-        <abbr title="Ferramenta de linha de comando">CLI</abbr>
-        para organização, backup e gerenciamento de arquivos por tipo/extensão.
-        O projeto ainda está em desenvolvimento e não está pronto para uso em produção.
-      </p>
-    </section>
-
-    <div class="separador" role="separator" aria-hidden="true"></div>
-
-    <section class="visao_geral" aria-labelledby="visao-geral-title">
-      <h2 id="visao-geral-title" class="titulos">Visão Geral</h2>
-
-      <ul>
-        <li>
-          <strong>Objetivo principal:</strong>
-          Automatizar a organização e backup de arquivos em diretórios, categorizando-os por tipos/extensões definidos pelo usuário.
-        </li>
-
-        <li>
-          <strong>Funcionalidades atuais:</strong>
-          <ul class="sub_lista">
-            <li>Definir e editar tipos de arquivos/extensões.</li>
-            <li>Remover tipos/extensões.</li>
-            <li>
-              Interface <abbr title="Ferramenta de linha de comando">CLI</abbr>
-              amigável e visualmente rica com
-              <abbr title="Lib Python para criar textos formatados e saídas atraentes no terminal">Rich</abbr>.
-            </li>
-            <li>Barra de progresso e feedback visual.</li>
-          </ul>
-        </li>
-
-        <li>
-          <strong>Persistência de dados:</strong>
-          Arquivos JSON
-          <code><abbr title="Arquivo onde as extensões adicionadas por você serão armazenas.">extensions.json</abbr></code>
-          armazenam as definições de tipos e extensões.
-        </li>
-      </ul>
-    </section>
-
-    <div class="separador" role="separator" aria-hidden="true"></div>
-
-    <section class="estrutura_do_projeto" aria-labelledby="estrutura-title">
-      <h2 id="estrutura-title" class="titulos">Estrutura do Projeto</h2>
-
-      <div class="bash_case" aria-hidden="false">
-        <pre><code class="bash">
-Ryzor
-├── src/
-│   ├── cli.py           # Ponto de entrada CLI
-│   ├── modules/
-│   │   ├── definer.py
-│   │   ├── file_manager.py
-│   │   ├── lister.py
-│   │   ├── logger.py        # Logging e UI
-│   │   ├── remover.py
-│   │   ├── utils.py
-│   │   └── data/
-│   │       └── extensions.json
-└── tests/
-    └── generator.py     # Geração de arquivos de teste
-        </code></pre>
-      </div>
-    </section>
-
-    <div class="separador" role="separator" aria-hidden="true"></div>
-
-    <section class="exemplo_uso" aria-labelledby="exemplo-title">
-      <h2 id="exemplo-title" class="titulos">Exemplo de Uso</h2>
-
-      <div class="bash_case">
-        <pre><code class="bash">
+      <pre><code class="bash">
 # Organizar arquivos
 python src/cli.py organize -p ./meus_arquivos -d ./organizados
 
 # Definir novas extensões
 python src/cli.py define -t Imagens -exts .jpg .png .gif
+      </code></pre>
 
-# Listar extensões
-python src/cli.py list -e_exts
+      <hr>
 
-# Remover extensões
-python src/cli.py remove -t Imagens -exts .gif
-        </code></pre>
+      <div class="summary-grid">
+        <div>
+          <h3>Ideal para</h3>
+          <p>Usuários que querem organizar pastas rapidamente usando regras por extensão.</p>
+        </div>
+        <div>
+          <h3>Requisitos</h3>
+          <p>Python 3.11+</p>
+        </div>
+        <div>
+          <h3>Instalar</h3>
+          <p><code>pip install rich pyfiglet</code></p>
+        </div>
       </div>
     </section>
 
-    <div class="separador" role="separator" aria-hidden="true"></div>
+    <!-- Features -->
+    <section id="features" aria-labelledby="features-title" class="card">
+      <h2 id="features-title" class="titulos">O que faz</h2>
+      <ul>
+        <li>Define categorias por extensões e realoca arquivos automaticamente.</li>
+        <li>Preview das mudanças antes de executar (modo seguro).</li>
+        <li>Opção de backup (send2trash) e barra de progresso com Rich.</li>
+        <li>Persistência simples em JSON (extensions.json).</li>
+      </ul>
+    </section>
 
-    <section class="dependencias" aria-labelledby="dependencias-title">
+    <!-- Dependencias / Estrutura-->
+    <section id="dependencias" aria-labelledby="dependencias-title" class="card">
       <h2 id="dependencias-title" class="titulos">Dependências</h2>
-
       <ul>
         <li>Python 3.11+</li>
-        <li>
-          <code>
-            <a href="https://pypi.org/project/rich/" target="_blank" rel="noopener noreferrer">Rich</a>
-          </code>
-        </li>
-        <li>
-          <code>
-            <a href="https://pypi.org/project/pyfiglet/" target="_blank" rel="noopener noreferrer">pyfiglet</a>
-          </code>
-        </li>
-        <li>
-          <code>
-            <a href="https://pypi.org/project/Send2Trash/" target="_blank" rel="noopener noreferrer">send2trash</a>
-          </code>
-        </li>
-        <li>Bibliotecas padrão:
-          <a href="https://docs.python.org/3/library/pathlib.html" target="_blank" rel="noopener noreferrer"><code>pathlib</code></a>,
-          <a href="https://docs.python.org/3/library/shutil.html" target="_blank" rel="noopener noreferrer"><code>shutil</code></a>,
-          <a href="https://docs.python.org/3/library/os.html" target="_blank" rel="noopener noreferrer"><code>os</code></a>,
-          <a href="https://docs.python.org/3/library/json.html" target="_blank" rel="noopener noreferrer"><code>json</code></a>,
-          <a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener noreferrer"><code>argparse</code></a>,
-          <a href="https://docs.python.org/3/library/pprint.html" target="_blank" rel="noopener noreferrer"><code>pprint</code></a>,
-          <a href="https://docs.python.org/3/library/typing.html" target="_blank" rel="noopener noreferrer"><code>typing</code></a>
-        </li>
+        <li><a href="https://pypi.org/project/rich/" target="_blank" rel="noopener noreferrer">rich</a></li>
+        <li><a href="https://pypi.org/project/pyfiglet/" target="_blank" rel="noopener noreferrer">pyfiglet</a></li>
+        <li><a href="https://pypi.org/project/Send2Trash/" target="_blank" rel="noopener noreferrer">send2trash</a></li>
       </ul>
 
-      <h5 class="sub_titulo">Instalação das dependências:</h5>
-      <div class="bash_case">
-        <pre><code class="bash">pip install rich pyfiglet</code></pre>
-      </div>
+      <h3 class="sub_titulo">Estrutura do projeto</h3>
+      <pre><code class="bash">
+Ryzor
+├── src/
+│   ├── cli.py
+│   ├── modules/
+│   │   ├── definer.py
+│   │   ├── file_manager.py
+│   │   ├── logger.py
+└── tests/
+    └── generator.py
+      </code></pre>
     </section>
 
-    <div class="separador" role="separator" aria-hidden="true"></div>
-
-    <section class="status" aria-labelledby="status-title">
+    <!-- Status -->
+    <section id="status" aria-labelledby="status-title" class="card">
       <h2 id="status-title" class="titulos">Status</h2>
-
-      <h5 class="sub_titulo">Projeto funcional, mas em estágio intermediário:</h5>
-
+      <p>Projeto funcional, em estágio intermediário.</p>
       <ul>
-        <li>Sem testes automatizados.</li>
-        <li>Sem validação robusta de inputs.</li>
-        <li>Não pronto para produção.</li>
-        <li>Sem documentação externa completa.</li>
+        <li>Sem testes automatizados (próxima meta).</li>
+        <li>Validação de inputs limitada — use com cautela em produção.</li>
+        <li>Documentação básica — mais exemplos em progresso.</li>
       </ul>
-
-      <div class="github">
-        <a href="https://github.com/lucaas-d3v/Ryzor" target="_blank" rel="noopener noreferrer">
-          <button type="button">GitHub</button>
-        </a>
-      </div>
     </section>
 
-    <div class="separador" role="separator" aria-hidden="true"></div>
-
-    <section class="licenca" aria-labelledby="licenca-title">
+    <!-- License -->
+    <section id="licenca" aria-labelledby="licenca-title" class="card">
       <h2 id="licenca-title" class="titulos">Licença</h2>
-      <p>Este projeto ainda não possui uma licença definida.</p>
+      <p>Sem licença definida — adicione uma (MIT, Apache, etc.) se quiser permitir contribuições formais.</p>
     </section>
-
   </main>
 
-  <footer>
-    <p>&#169; <a class="k" href="https://github.com/lucaas-d3v" target="_blank" rel="noopener noreferrer">~K'</a>, 2025</p>
-    <p>Versão: 0.2.0</p>
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <p>&#169; <a class="k" href="https://github.com/lucaas-d3v" target="_blank" rel="noopener noreferrer">~K'</a>, 2025</p>
+      <p>Versão: 0.2.0 • <a href="https://github.com/lucaas-d3v/Ryzor" target="_blank" rel="noopener noreferrer">Repositório</a></p>
+    </div>
   </footer>
 </body>
 </html>
