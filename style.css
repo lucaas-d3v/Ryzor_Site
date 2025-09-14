@@ -7,12 +7,12 @@
   font-style: normal;
 }
 
-/* Reset simples */
+/* Reset e base */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 body {
-  background-color: #191D27; /* site body */
-  color: #FFFCDB;           /* texto principal unificado */
+  background-color: #0b0f14; /* fundo neutro escuro para bom contraste */
+  color: #FFFCDB;           /* texto principal creme */
   font-family: Inter, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -20,199 +20,162 @@ body {
   -moz-osx-font-smoothing:grayscale;
 }
 
-/* ---------- Layout principal ---------- */
-main {
-  min-height: 76vh;
-  margin: 20px 5%;
-  padding: 24px;
-  background-color: #0b2774; /* painel de conteúdo (contraste com body) */
-  border-radius: 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-}
-
-/* separador: use border para melhor aparencia */
-.separador {
-  border-top: 2px solid #7F001F;
-  margin: 16px 0;
-}
-
-/* ---------- Header / Logo ---------- */
-header {
-  background-color: #7F001F;
-  height: 12vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-header nav h1{
-  font-family: 'pearl', "Times New Roman", serif;
-  font-size: clamp(28px, 5vh, 48px);
-  color: #FFFCDB;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-/* hover discreto (sem glow exagerado) */
-header nav h1:hover{
-  cursor: pointer;
-  transform: translateY(-1px);
-  transition: transform .15s ease;
-}
-
-/* ---------- Code block / pre ---------- */
-pre {
-  background: #1e1e1e;
-  color: #FFFCC8;
-  padding: 1rem;
-  border-radius: 8px;
-  overflow-x: auto;
-  font-family: "Fira Code", "JetBrains Mono", monospace;
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-pre code.bash::before{
-  content: "bash";
-  display:block;
-  color: #E03B54; /* marcador discreto */
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-  opacity: 0.9;
-}
-
-/* ---------- Tipografia de títulos (AGORA CREME COM ACENTO) ---------- */
-/* Títulos principais: creme unificado + barra/acento turquesa sutil */
-.titulos,
-.visao_geral h2,
-.estrutura_do_projeto h2,
-.exemplo_uso h2,
-.dependencias h2,
-.status h2,
-.licenca h2 {
-  font-family: 'pearl', serif;
-  color: #FFFCDB; /* título em creme (mesmo do corpo) */
-  margin: 10px 10px;
-  font-size: clamp(20px, 3.2vh, 34px);
-  line-height: 1.1;
-  position: relative;
-  /* leve sombra/realce para dar presença sem perder leitura */
-  text-shadow: 0 1px 0 rgba(0,0,0,0.45), 0 0 8px rgba(40,240,213,0.04);
-  transition: all .12s ease;
-}
-
-/* Decorativo: pequena barra gradient abaixo do título — identifica sem colorir o texto */
-.titulos::after,
-.visao_geral h2::after,
-.estrutura_do_projeto h2::after,
-.exemplo_uso h2::after,
-.dependencias h2::after,
-.status h2::after,
-.licenca h2::after {
-  content: "";
-  display: block;
-  width: 56px;               /* comprimento da barra */
-  height: 4px;
-  margin-top: 8px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, rgba(40,240,213,0.95) 0%, rgba(0,207,255,0.92) 100%);
-  opacity: 0.95;
-  transition: transform .15s ease, opacity .15s ease;
-}
-
-/* hover leve sobre título: barra ganha um pouco de destaque */
-.titulos:hover::after,
-.visao_geral h2:hover::after {
-  transform: translateY(-2px);
-  opacity: 1;
-}
-
-/* Subtítulos com leve variação (creme suave) */
-.sub_titulo {
-  font-family: 'pearl', serif;
-  color: #FFFCDB;
-  font-size: 1.05rem;
-  margin: 8px 10px;
-}
-
-/* ---------- Links e abbr ---------- */
-/* Único acento para links: ciano suave */
-a {
-  color: #00CFFF;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-  opacity: 0.95;
-  transform: translateY(-1px);
-}
-
-/* Abreviaturas: manter simples, tooltip só se necessário */
-abbr {
-  position: relative;
-  cursor: help;
-  color: #FFFCDB;
-  text-decoration: underline dotted;
-}
-abbr:hover::after {
-  content: attr(title);
+/* Skip link (focado por teclado) */
+.skip-link {
   position: absolute;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
-  color: #FFFCDB;
-  padding: 6px 8px;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  background: #FFFCDB;
+  color: #0b0f14;
+  padding: 8px 12px;
   border-radius: 4px;
-  white-space: nowrap;
-  font-size: 0.85rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-  z-index: 999;
+  z-index: 9999;
 }
 
-/* ---------- Github button ---------- */
-.github {
-  display:flex;
-  align-items:center;
-  margin: 18px 0 18px 10px;
+/* Header / nav */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 5%;
+  background: linear-gradient(180deg,#7F001F 0%, #6a0018 100%); /* bordô */
+  gap: 16px;
 }
-.github a { text-decoration: none; }
-.github button {
-  background-color: #7F001F;
-  color: #FFFCDB;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+.brand { display:flex; align-items:center; gap:12px; }
+.brand img { width:40px; height:40px; object-fit:contain; }
+.brand h1 {
   font-family: 'pearl', serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform .12s ease, background .12s ease;
-}
-.github button:hover {
-  background-color: #00FF84; /* destaque mais limpo no hover (verde neon suave) */
-  color: #191D27;
-  transform: translateY(-2px);
+  color:#FFFCDB;
+  font-size: clamp(20px, 3.2vh, 36px);
+  margin:0;
+  font-weight:400;
 }
 
-/* ---------- Texto do conteúdo ---------- */
-p, li {
-  color: #FFFCDB; /* corpo do texto consistente */
-  margin: 8px 10px;
-  font-size: 1rem;
+/* nav links */
+.nav-links { list-style:none; display:flex; gap:12px; align-items:center; margin:0; }
+.nav-links a {
+  color: rgba(255,255,255,0.9);
+  text-decoration:none;
+  font-weight:600;
+  padding:6px 8px;
+  border-radius:6px;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.04); transform: translateY(-2px); transition: all .12s ease; }
+
+/* Hero */
+.hero {
+  max-width: 1100px;
+  margin: 18px auto;
+  padding: 22px;
+  text-align: center;
+}
+.hero h2 {
+  font-family: 'pearl', serif;
+  font-size: clamp(18px, 3.8vh, 34px);
+  color: #FFFCDB;
+  margin-bottom: 8px;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6);
+}
+.hero-sub { color: rgba(255,255,219,0.92); margin-bottom: 14px; }
+
+/* buttons */
+.btn { display:inline-block; text-decoration:none; padding:10px 16px; border-radius:8px; font-weight:600; margin:6px; }
+.btn.primary { background: linear-gradient(90deg,#00FF84 0%, #00CFFF 100%); color:#081122; }
+.btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.06); color:#FFFCDB; }
+
+/* Main content container */
+main { max-width:1100px; margin: 18px auto; padding: 0 5%; }
+
+/* Card style for sections (no blue) */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  padding: 20px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
 }
 
-/* listas */
-ul { margin-left: 40px; margin-bottom: 12px; }
-.sub_lista { margin-left: 30px; }
+/* hr (substituindo p improvisado) */
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg,#7F001F 0%, rgba(255,255,219,0.06) 50%, #7F001F 100%);
+  margin: 18px 0;
+  border-radius: 2px;
+}
 
-/* status list improvements */
-.status ul { margin-left: 44px; }
+/* Titles: creme com pequena barra acento */
+.titulos,
+.card h2 {
+  font-family: 'pearl', serif;
+  color: #FFFCDB;
+  margin: 0 0 12px 0;
+  font-size: clamp(18px, 3.2vh, 30px);
+  position: relative;
+}
+.titulos::after {
+  content: "";
+  display:block;
+  width:56px; height:4px; border-radius:3px;
+  margin-top:8px;
+  background: linear-gradient(90deg, rgba(40,240,213,0.9) 0%, rgba(0,207,255,0.9) 100%);
+  opacity:0.95;
+}
 
-/* licenca */
-.licenca p { margin: 10px; }
+/* Subtitles */
+.sub_titulo { font-family: 'pearl', serif; color:#FFFCDB; margin-top:10px; }
 
-/* utilitários responsivos */
-@media (max-width: 720px) {
-  main { margin: 12px 4%; padding: 18px; }
-  .github button { font-size: 0.95rem; padding: 8px 14px; }
-  header { height: 11vh; }
-  .titulos::after { width: 48px; height: 3px; } /* ajusta barra em telas pequenas */
+/* paragraphs & lists */
+p, li { color: rgba(255,255,219,0.95); margin: 8px 0; }
+ul { margin-left: 20px; }
+
+/* code & pre */
+pre {
+  background: #0e1113;
+  color: #FFFCC8;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x:auto;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* Summary grid inside quickstart */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* Footer */
+footer {
+  margin-top: 18px;
+  padding: 18px 5%;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  color: rgba(255,255,219,0.7);
+}
+.footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; gap:12px; align-items:center; }
+
+/* link styles */
+a { color: #00CFFF; }
+a.k { color:#FFFCDB; text-decoration:none; }
+
+/* responsive */
+@media (max-width: 820px) {
+  .nav-links { display:none; } /* simplifica nav em mobile */
+  .hero h2 { font-size: clamp(18px, 4.6vh, 26px); }
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:6px; }
+  .titulos::after { width:48px; height:3px; }
 }
