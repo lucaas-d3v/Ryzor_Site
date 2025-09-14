@@ -79,17 +79,53 @@ pre code.bash::before{
   opacity: 0.9;
 }
 
-/* ---------- Tipografia de títulos ---------- */
-.titulos, .visao_geral h2, .estrutura_do_projeto h2,
-.exemplo_uso h2, .dependencias h2, .status h2, .licenca h2 {
+/* ---------- Tipografia de títulos (AGORA CREME COM ACENTO) ---------- */
+/* Títulos principais: creme unificado + barra/acento turquesa sutil */
+.titulos,
+.visao_geral h2,
+.estrutura_do_projeto h2,
+.exemplo_uso h2,
+.dependencias h2,
+.status h2,
+.licenca h2 {
   font-family: 'pearl', serif;
-  color: #00CFFF; /* acento único para títulos */
+  color: #FFFCDB; /* título em creme (mesmo do corpo) */
   margin: 10px 10px;
   font-size: clamp(20px, 3.2vh, 34px);
   line-height: 1.1;
+  position: relative;
+  /* leve sombra/realce para dar presença sem perder leitura */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.45), 0 0 8px rgba(40,240,213,0.04);
+  transition: all .12s ease;
 }
 
-/* Subtítulos com leve variação (creme mais suave) */
+/* Decorativo: pequena barra gradient abaixo do título — identifica sem colorir o texto */
+.titulos::after,
+.visao_geral h2::after,
+.estrutura_do_projeto h2::after,
+.exemplo_uso h2::after,
+.dependencias h2::after,
+.status h2::after,
+.licenca h2::after {
+  content: "";
+  display: block;
+  width: 56px;               /* comprimento da barra */
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(40,240,213,0.95) 0%, rgba(0,207,255,0.92) 100%);
+  opacity: 0.95;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+/* hover leve sobre título: barra ganha um pouco de destaque */
+.titulos:hover::after,
+.visao_geral h2:hover::after {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+/* Subtítulos com leve variação (creme suave) */
 .sub_titulo {
   font-family: 'pearl', serif;
   color: #FFFCDB;
@@ -98,7 +134,7 @@ pre code.bash::before{
 }
 
 /* ---------- Links e abbr ---------- */
-/* Único acento para links: ciano */
+/* Único acento para links: ciano suave */
 a {
   color: #00CFFF;
   text-decoration: none;
@@ -129,6 +165,7 @@ abbr:hover::after {
   white-space: nowrap;
   font-size: 0.85rem;
   box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  z-index: 999;
 }
 
 /* ---------- Github button ---------- */
@@ -150,7 +187,7 @@ abbr:hover::after {
   transition: transform .12s ease, background .12s ease;
 }
 .github button:hover {
-  background-color: #6ad7ff;
+  background-color: #00FF84; /* destaque mais limpo no hover (verde neon suave) */
   color: #191D27;
   transform: translateY(-2px);
 }
@@ -177,4 +214,5 @@ ul { margin-left: 40px; margin-bottom: 12px; }
   main { margin: 12px 4%; padding: 18px; }
   .github button { font-size: 0.95rem; padding: 8px 14px; }
   header { height: 11vh; }
+  .titulos::after { width: 48px; height: 3px; } /* ajusta barra em telas pequenas */
 }
