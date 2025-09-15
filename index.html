@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ryzor — Organizador de Arquivos (CLI)</title>
-  <meta name="description" content="Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões.">
-  <meta name="keywords" content="Ryzor, CLI, organizador de arquivos, backup, Python, rich, pyfiglet">
-  <link rel="canonical" href="https://lucaas-d3v.github.io/Ryzor_Site/">
+  <meta name="description" content="Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões." />
+  <meta name="keywords" content="Ryzor, CLI, organizador de arquivos, backup, Python, rich, pyfiglet" />
+  <link rel="canonical" href="https://lucaas-d3v.github.io/Ryzor_Site/" />
 
-  <!-- Open Graph / Social preview -->
-  <meta property="og:title" content="Ryzor — Organizador de Arquivos (CLI)">
-  <meta property="og:description" content="Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://lucaas-d3v.github.io/Ryzor_Site/">
-  <meta property="og:site_name" content="Ryzor">
-  <!-- se tiver imagem de preview, adicione: -->
-  <!-- <meta property="og:image" content="https://exemplo.com/assets/preview.png"> -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ryzor — Organizador de Arquivos (CLI)" />
+  <meta property="og:description" content="Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lucaas-d3v.github.io/Ryzor_Site/" />
+  <meta property="og:site_name" content="Ryzor" />
+  <meta property="og:image" content="assets/Ryzor_Banner.png" />
 
-  <!-- JSON-LD básico para indexação -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -26,36 +25,53 @@
     "description": "Ryzor é um organizador de arquivos via linha de comando (CLI). Automatize organização, backup e gerenciamento por tipos/extensões.",
     "url": "https://lucaas-d3v.github.io/Ryzor_Site/",
     "programmingLanguage": "Python",
-    "codeRepository": "https://github.com/lucaas-d3v/Ryzor"
+    "codeRepository": "https://github.com/lucaas-d3v/Ryzor",
+    "version": "0.2.6",
+    "license": "MIT"
   }
   </script>
 
-  <link rel="icon" href="assets/Ryzor_icon.svg" media="(prefers-color-scheme: light)">
-  <link rel="icon" href="assets/Ryzor_icon_light.svg" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/Ryzor_icon.svg" media="(prefers-color-scheme: light)" />
+  <link rel="icon" href="assets/Ryzor_icon_light.svg" media="(prefers-color-scheme: dark)" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Skip link para acessibilidade -->
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
 
-  <header role="banner">
-    <nav class="top-nav" aria-label="Principal">
+  <header class="site-header" role="banner">
+    <nav class="top-nav" aria-label="Navegação principal">
       <div class="brand">
-        <img src="assets/Ryzor_icon.svg" alt="Ryzor" width="40" height="40" />
-        <h1 id="site-title">Ryzor</h1>
+        <img src="assets/Ryzor_icon.svg" alt="Ícone Ryzor" width="44" height="44" />
+        <div class="brand-text">
+          <h1 id="site-title">Ryzor</h1>
+          <p class="tagline">Organizador de arquivos via CLI • Python</p>
+        </div>
       </div>
 
-      <ul class="nav-links" role="navigation">
+      <button id="nav-toggle" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Abrir menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+
+      <ul id="primary-nav" class="nav-links" role="navigation">
         <li><a href="#quickstart">Começar</a></li>
         <li><a href="#features">O que faz</a></li>
-        <li><a href="#dependencias">Dependências</a></li>
+        <li><a href="#install">Instalação</a></li>
+        <li><a href="#estrutura">Estrutura</a></li>
         <li><a href="#status">Status</a></li>
         <li><a href="#github">GitHub</a></li>
       </ul>
     </nav>
+
     <div class="hero" role="region" aria-labelledby="hero-title">
+      <picture>
+        <source srcset="assets/Ryzor_Banner.png" media="(min-width: 720px)">
+        <img src="assets/Ryzor_Banner.png" alt="Banner Ryzor" class="hero-banner" />
+      </picture>
+
       <h2 id="hero-title">Organize seus arquivos. Rapidamente. Pelo terminal.</h2>
-      <p class="hero-sub">Ryzor é uma ferramenta CLI em Python para organizar, agrupar e fazer backup de arquivos por tipo/extensão — simples, rápida e personalizável.</p>
+      <p class="hero-sub">Ryzor é uma ferramenta de <strong>linha de comando (CLI)</strong> para organização, backup e gerenciamento de arquivos por tipo/extensão. Em desenvolvimento — <strong>não está pronta para uso em produção</strong>.</p>
+
       <div class="hero-cta">
         <a class="btn primary" href="https://github.com/lucaas-d3v/Ryzor" id="github" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
         <a class="btn ghost" href="#quickstart">Como começar</a>
@@ -65,115 +81,205 @@
 
   <main id="main-content" tabindex="-1">
     <!-- Quickstart -->
-    <section id="quickstart" aria-labelledby="quickstart-title" class="card">
-      <h2 id="quickstart-title" class="titulos">Começar (Quickstart)</h2>
-      <p>Rápido exemplo para ver o Ryzor em ação — execute no diretório do projeto:</p>
+    <section id="quickstart" class="card" aria-labelledby="quickstart-title">
+      <h2 id="quickstart-title" class="titulos">Visão Geral</h2>
+      <p><strong>Objetivo principal:</strong> Automatizar a organização e backup de arquivos em diretórios, categorizando-os por tipos/extensões definidos pelo usuário.</p>
 
+      <ul class="features-list">
+        <li><strong>Funcionalidades atuais:</strong>
+          <ul>
+            <li>Definir e editar tipos de arquivos/extensões</li>
+            <li>Organizar e realizar backup de arquivos entre diretórios</li>
+            <li>Listar arquivos e extensões com modo recursivo</li>
+            <li>Remover tipos/extensões com preview</li>
+            <li>Reparar e restaurar configurações padrão</li>
+            <li>Interface CLI rica com feedback visual usando <code>rich</code></li>
+            <li>Barra de progresso e logs detalhados</li>
+          </ul>
+        </li>
+        <li><strong>Persistência de dados:</strong> Arquivos JSON (<code>extensions.json</code>) armazenam as definições de tipos e extensões.</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <!-- Installation -->
+    <section id="install" class="card" aria-labelledby="install-title">
+      <h2 id="install-title" class="titulos">Instalação</h2>
+
+      <h3>Via pip (Recomendado)</h3>
       <pre><code class="bash">
-# Organizar arquivos
-python src/cli.py organize -p ./meus_arquivos -d ./organizados
+# Clone o repositório
+git clone &lt;repo-url&gt;
+cd Ryzor
 
-# Definir novas extensões
-python src/cli.py define -t Imagens -exts .jpg .png .gif
+# Instale dependências
+pip install -r requirements.txt
+
+# Instale o pacote
+pip install .
+
+# Use o comando
+ryzor help
       </code></pre>
 
-      <hr>
-
-      <div class="summary-grid">
-        <div>
-          <h3>Ideal para</h3>
-          <p>Usuários que querem organizar pastas rapidamente usando regras por extensão.</p>
-        </div>
-        <div>
-          <h3>Requisitos</h3>
-          <p>Python 3.11+</p>
-        </div>
-        <div>
-          <h3>Instalar</h3>
-          <p><code>pip install rich pyfiglet</code></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section id="features" aria-labelledby="features-title" class="card">
-      <h2 id="features-title" class="titulos">O que faz</h2>
-      <ul>
-        <li>Define categorias por extensões e realoca arquivos automaticamente.</li>
-        <li>Preview das mudanças antes de executar (modo seguro).</li>
-        <li>Opção de backup (send2trash) e barra de progresso com Rich.</li>
-        <li>Persistência simples em JSON (extensions.json).</li>
-      </ul>
-    </section>
-
-    <!-- Dependencias / Estrutura-->
-    <section id="dependencias" aria-labelledby="dependencias-title" class="card">
-      <h2 id="dependencias-title" class="titulos">Dependências</h2>
-      <ul>
-        <li>Python 3.11+</li>
-        <li><a href="https://pypi.org/project/rich/" target="_blank" rel="noopener noreferrer">rich</a></li>
-        <li><a href="https://pypi.org/project/pyfiglet/" target="_blank" rel="noopener noreferrer">pyfiglet</a></li>
-        <li><a href="https://pypi.org/project/Send2Trash/" target="_blank" rel="noopener noreferrer">send2trash</a></li>
-      </ul>
-
-      <h3 class="sub_titulo">Estrutura do projeto</h3>
+      <h3>Instalação manual</h3>
       <pre><code class="bash">
-Ryzor
+# Instale as dependências (versões recomendadas)
+pip install rich==13.9.4 pyfiglet==0.8.post1 send2trash==1.8.3
+
+# Reparar dependências (comando do projeto)
+ryzor repair --dependences  # ou -dp
+      </code></pre>
+    </section>
+
+    <hr />
+
+    <!-- Commands -->
+    <section id="commands" class="card" aria-labelledby="commands-title">
+      <h2 id="commands-title" class="titulos">Comandos Principais</h2>
+
+      <h3>Organização de Arquivos</h3>
+      <pre><code class="bash">
+# Organizar arquivos por tipo
+ryzor organize -p ./meus_arquivos -d ./organizados
+
+# Organizar com modo recursivo
+ryzor organize -p ./origem -d ./destino --recursive
+      </code></pre>
+
+      <h3>Gerenciamento de Tipos/Extensões</h3>
+      <pre><code class="bash">
+# Definir novas extensões
+ryzor define -t Imagens -exts .jpg .png .gif .webp
+
+# Listar extensões
+ryzor list -e_exts
+
+# Remover extensões de um tipo
+ryzor remove -t Imagens -exts .gif
+      </code></pre>
+
+      <h3>Reparo e Manutenção</h3>
+      <pre><code class="bash">
+# Reparar módulos e configurações
+ryzor repair
+      </code></pre>
+    </section>
+
+    <hr />
+
+    <!-- Structure -->
+    <section id="estrutura" class="card" aria-labelledby="estrutura-title">
+      <h2 id="estrutura-title" class="titulos">Estrutura do Projeto</h2>
+
+      <pre><code class="bash">
+.
+├── pyproject.toml
+├── requirements.txt
+├── README.md
 ├── src/
 │   ├── cli.py
+│   ├── t.py
 │   ├── modules/
 │   │   ├── definer.py
 │   │   ├── file_manager.py
+│   │   ├── lister_manager.py
 │   │   ├── logger.py
-└── tests/
-    └── generator.py
+│   │   ├── remover.py
+│   │   ├── repair_manager.py
+│   │   ├── utils.py
+│   │   └── data/extensions.json
+│   ├── data/extensions.json
+│   └── protected/extensions_default.json
+└── tests/generator.py
       </code></pre>
     </section>
 
-    <!-- Status -->
-    <section id="status" aria-labelledby="status-title" class="card">
-      <h2 id="status-title" class="titulos">Status</h2>
-      <p>Projeto funcional, em estágio intermediário.</p>
+    <hr />
+
+    <!-- Dependencies -->
+    <section id="dependencias" class="card" aria-labelledby="deps-title">
+      <h2 id="deps-title" class="titulos">Dependências Principais</h2>
+
       <ul>
-        <li>Sem testes automatizados (próxima meta).</li>
-        <li>Validação de inputs limitada — use com cautela em produção.</li>
-        <li>Documentação básica — mais exemplos em progresso.</li>
+        <li>Python 3.11+</li>
+        <li><a href="https://pypi.org/project/rich/" target="_blank" rel="noopener noreferrer">rich 13.9.4</a></li>
+        <li><a href="https://pypi.org/project/pyfiglet/" target="_blank" rel="noopener noreferrer">pyfiglet 0.8.post1</a></li>
+        <li><a href="https://pypi.org/project/Send2Trash/" target="_blank" rel="noopener noreferrer">send2trash 1.8.3</a></li>
       </ul>
     </section>
 
+    <hr />
+
+    <!-- Status & Roadmap -->
+    <section id="status" class="card" aria-labelledby="status-title">
+      <h2 id="status-title" class="titulos">Status & Roadmap</h2>
+
+      <p>Estado atual: <strong>Desenvolvimento ativo</strong>. Versão: <strong>0.2.6</strong>. Não pronta para produção.</p>
+
+      <h3>Prioridade Alta</h3>
+      <ul>
+        <li>Implementar testes automatizados</li>
+        <li>Melhorar validação de inputs</li>
+        <li>Documentação externa completa</li>
+      </ul>
+
+      <h3>Prioridade Média</h3>
+      <ul>
+        <li>Automatizar deploy / CI</li>
+        <li>Suporte a plugins</li>
+        <li>Interface web complementar</li>
+      </ul>
+    </section>
+
+    <hr />
+
     <!-- License -->
-    <section id="licenca" aria-labelledby="licenca-title" class="card">
+    <section id="licenca" class="card" aria-labelledby="licenca-title">
       <h2 id="licenca-title" class="titulos">Licença</h2>
-      <pre>
+      <pre class="license-text">
 Licença MIT
 
-Copyright &#169 2025 Lucas Paulino Da Silva
+Copyright © 2025 Lucas Paulino Da Silva
 
-É concedida permissão, gratuita, a qualquer pessoa que obtenha uma cópia
-deste software e arquivos de documentação associados (o "Software"), para lidar
-no Software sem restrições, incluindo, sem limitação, os direitos
-usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender
-cópias do Software e permitir que as pessoas a quem o Software é destinado
-mobiliados para tal, sujeitos às seguintes condições:
-
-O aviso de direitos autorais acima e este aviso de permissão devem ser incluídos em todos
-cópias ou partes substanciais do Software.
-
-O SOFTWARE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU
-IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO,
-ADEQUAÇÃO A UM DETERMINADO FIM E NÃO VIOLAÇÃO. EM NENHUMA HIPÓTESE O
-OS AUTORES OU TITULARES DOS DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS OU OUTROS
-RESPONSABILIDADE, SEJA EM UMA AÇÃO CONTRATUAL, DELITO OU DE OUTRA FORMA, DECORRENTE DE,
-FORA OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO
-PROGRAMAS.</pre>
+(Resumo: permissão gratuita para usar, copiar, modificar e distribuir. Sem garantias. Consulte o arquivo LICENSE para o texto completo.)
+      </pre>
     </section>
   </main>
 
   <footer role="contentinfo">
     <div class="footer-inner">
-      <p>&#169; <a class="k" href="https://github.com/lucaas-d3v" target="_blank" rel="noopener noreferrer">~K'</a>, 2025</p>
-      <p>Versão: 0.2.6 • <a href="https://github.com/lucaas-d3v/Ryzor" target="_blank" rel="noopener noreferrer">Repositório</a></p>
+      <p>© <a class="k" href="https://github.com/lucaas-d3v" target="_blank" rel="noopener noreferrer">~K'</a>, 2025 • Versão: 0.2.6</p>
+      <p><a href="https://github.com/lucaas-d3v/Ryzor" target="_blank" rel="noopener noreferrer">Repositório</a></p>
     </div>
   </footer>
+
+  <!-- Tiny JS: toggle nav on mobile -->
+  <script>
+    (function () {
+      const navToggle = document.getElementById('nav-toggle');
+      const nav = document.getElementById('primary-nav');
+      if (!navToggle || !nav) return;
+
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
+
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          nav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
